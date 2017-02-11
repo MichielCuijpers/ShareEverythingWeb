@@ -66,12 +66,12 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner, addToCart
     ownerIcon: {
       marginRight: 8,
     },
-  }
+  };
 
   const onAddToCart = () => {
     addToCart();
     router.goBack();
-  }
+  };
 
   return (
     <div>
@@ -114,7 +114,7 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner, addToCart
         />
       </BottomButton>
     </div>
-  )
+  );
 };
 
 ItemDetails.contextTypes = {

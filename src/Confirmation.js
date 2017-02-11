@@ -1,7 +1,6 @@
 import React from 'react';
 
 import AppBar from 'material-ui/AppBar';
-import Left from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
@@ -10,7 +9,6 @@ import { connect } from 'react-redux';
 import BottomButton from './BottomButton';
 
 import { resetCart } from './actions/items';
-
 
 const Confirmation = ({ resetCart }, { router }) => {
   const styles = {
@@ -31,17 +29,17 @@ const Confirmation = ({ resetCart }, { router }) => {
       textAlign: 'center',
     },
     emoji: {
-      textAlign: 'center',      
+      textAlign: 'center',
       paddingTop: 48,
-      fontSize: 112, 
-      paddingBottom: 24,     
+      fontSize: 112,
+      paddingBottom: 24,
     },
-  }
+  };
 
   const onHome = () => {
     resetCart();
     router.replace('/');
-  }
+  };
 
   return (
     <div>
@@ -52,9 +50,9 @@ const Confirmation = ({ resetCart }, { router }) => {
         onLeftIconButtonTouchTap={onHome}
       />
       <div style={styles.container}>
-          <div style={styles.emoji}> 
-            🎉
-          </div>        
+        <div style={styles.emoji}>
+          🎉
+          </div>
         <div style={styles.content}>
           <div>Congratulations.</div>
           <div>Your items are ordered and coming your way.</div>
@@ -71,7 +69,7 @@ const Confirmation = ({ resetCart }, { router }) => {
         />
       </BottomButton>
     </div>
-  )
+  );
 };
 
 Confirmation.contextTypes = {

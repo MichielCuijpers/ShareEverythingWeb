@@ -26,7 +26,7 @@ const Line = ({ title, price }) => {
       <div style={styles.price}>{ price.toFixed(2) }</div>
     </div>
   );
-}
+};
 
 const Payment = ({ items }, { router }) => {
   const styles = {
@@ -47,19 +47,19 @@ const Payment = ({ items }, { router }) => {
       marginTop: 16,
       marginBottom: 16,
     }
-  }
+  };
 
   const onHome = () => {
     router.goBack();
-  }
+  };
 
   const onConfirmation = () => {
-    router.push(`/confirmation`);
-  }
+    router.push('/confirmation');
+  };
 
   const itemsInCart = items
     .filter(item => item.inCart)
-    .map(({ title, price, id }) => <Line title={title} price={price} key={id} />)
+    .map(({ title, price, id }) => <Line title={title} price={price} key={id} />);
 
   const total = items
     .filter(item => item.inCart)
@@ -91,7 +91,7 @@ const Payment = ({ items }, { router }) => {
         />
       </BottomButton>
     </div>
-  )
+  );
 };
 
 Payment.contextTypes = {
@@ -101,7 +101,7 @@ Payment.contextTypes = {
 const mapStateToProps = ({ items }) => {
   return {
     items,
-  }
+  };
 };
 
 export default connect(mapStateToProps, null)(Payment);

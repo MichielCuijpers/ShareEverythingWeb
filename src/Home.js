@@ -1,22 +1,16 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
-import Search from 'material-ui/svg-icons/action/search';
 import TextField from 'material-ui/TextField';
 import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
-
-
-import data from './data.json';
 
 import Items from './Items';
 import BottomButton from './BottomButton';
 
 const Home = ({ numberOfItemsInCart }, { router }) => {
   const onPay = () => {
-    router.push(`/payment`);
+    router.push('/payment');
   };
 
   const renderBottomButton = () => {
@@ -41,7 +35,7 @@ const Home = ({ numberOfItemsInCart }, { router }) => {
     }
 
     return null;
-  }
+  };
 
   const styles = {
     appbar: {
@@ -64,11 +58,11 @@ const Home = ({ numberOfItemsInCart }, { router }) => {
     search: {
       marginTop: 32,
     }
-  }
+  };
 
   return (
     <div>
-      <AppBar title="Share Everything" style={styles.appbar} />      
+      <AppBar title="Share Everything" style={styles.appbar} />
       <div style={styles.container}>
         <div style={styles.header}>
           <div style={styles.headerTitle}>What do you need?</div>
@@ -78,7 +72,7 @@ const Home = ({ numberOfItemsInCart }, { router }) => {
       </div>
       {renderBottomButton()}
     </div>
-  )
+  );
 };
 
 Home.contextTypes = {
@@ -88,7 +82,7 @@ Home.contextTypes = {
 const mapStateToProps = ({ items }) => {
   return {
     numberOfItemsInCart: items.filter(item => item.inCart).length
-  }
+  };
 };
 
 export default connect(mapStateToProps, null)(Home);

@@ -1,12 +1,5 @@
 import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
-import Search from 'material-ui/svg-icons/action/search';
-import TextField from 'material-ui/TextField';
-import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import { connect } from 'react-redux';
 
@@ -28,7 +21,7 @@ const Items = ({ items = [] }, { router }) => {
       >
         <img src={imageUrl} />
       </GridTile>
-    )
+    );
   });
 
   const styles = {
@@ -37,7 +30,7 @@ const Items = ({ items = [] }, { router }) => {
       flex: 1,
       padding: 4,
     },
-  }
+  };
 
   return (
     <GridList
@@ -45,7 +38,7 @@ const Items = ({ items = [] }, { router }) => {
       style={styles.gridList}
     >
       {components}
-    </GridList>      
+    </GridList>
   );
 };
 
@@ -56,7 +49,7 @@ Items.contextTypes = {
 const mapStateToProps = ({ items }) => {
   return {
     items,
-  }
+  };
 };
 
 export default connect(mapStateToProps, null)(Items);

@@ -1,8 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Router, Route, Link, browserHistory } from 'react-router'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { Router, Route, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -12,7 +12,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Confirmation from './Confirmation';
 import Home from './Home';
 import ItemDetails from './ItemDetails';
-import Payment from './Payment'
+import Payment from './Payment';
 
 import rootReducer from './reducers';
 import customTheme from './customTheme';
@@ -27,12 +27,12 @@ class App extends React.Component {
   };
 
   render() {
-    injectTapEventPlugin();    
+    injectTapEventPlugin();
     const muiTheme = getMuiTheme(customTheme);
 
     const store = createStore(
       rootReducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()      
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
     return (
@@ -48,14 +48,14 @@ class App extends React.Component {
             { name: 'description', content: 'Share Everything' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' }
           ]}
-        />             
-        <MuiThemeProvider muiTheme={muiTheme}>        
+        />
+        <MuiThemeProvider muiTheme={muiTheme}>
           <Provider store={store}>
             <Router history={browserHistory} onRouteUpdate={this.onRouteUpdate}>
               <Route path="/" component={Home} />
               <Route path="/details/:id" component={ItemDetails} />
-              <Route path="/payment" component={Payment} />                          
-              <Route path="/confirmation" component={Confirmation} />            
+              <Route path="/payment" component={Payment} />
+              <Route path="/confirmation" component={Confirmation} />
             </Router>
           </Provider>
         </MuiThemeProvider>

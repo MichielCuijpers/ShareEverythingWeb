@@ -6,16 +6,37 @@ import Search from 'material-ui/svg-icons/action/search';
 import TextField from 'material-ui/TextField';
 import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import RaisedButton from 'material-ui/RaisedButton';
+import { connect } from 'react-redux';
+
 
 import data from './data.json';
 
 import Items from './Items';
 import BottomButton from './BottomButton';
 
-const Home = (props, { router }) => {
+const Home = ({ numberOfItemsInCart }, { router }) => {
   const onPay = () => {
     router.push(`/payment`);
   };
+
+  const renderBottomButton = () => {
+    if (numberOfItemsInCart) {
+      return (
+        <BottomButton>
+          <RaisedButton
+            label="Order"
+            fullWidth
+            labelPosition="before"
+            secondary
+            onTouchTap={onPay}
+            icon={<Right />}
+          />
+        </BottomButton>
+      );
+    }
+
+    return null;
+  }
 
   const styles = {
     appbar: {
@@ -26,7 +47,7 @@ const Home = (props, { router }) => {
     },
     container: {
       marginTop: 64,
-      marginBottom: 76,
+      marginBottom: numberOfItemsInCart === 0 ? 0 : 76,
     },
     header: {
       padding: 32,
@@ -50,16 +71,7 @@ const Home = (props, { router }) => {
         </div>
         <Items />
       </div>
-      <BottomButton>
-        <RaisedButton
-          label="Order"
-          fullWidth
-          labelPosition="before"
-          secondary
-          onTouchTap={onPay}
-          icon={<Right />}
-        />
-      </BottomButton>
+      {renderBottomButton()}
     </div>
   )
 };
@@ -68,4 +80,10 @@ Home.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default Home;
+const mapStateToProps = ({ items }) => {
+  return {
+    numberOfItemsInCart: items.filter(item => item.inCart).length
+  }
+};
+
+export default connect(mapStateToProps, null)(Home);

@@ -8,7 +8,8 @@ import AppBar from 'material-ui/AppBar';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Grid from './Grid';
+import Items from './Items';
+import ItemDetails from './ItemDetails';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +17,20 @@ class App extends React.Component {
   }
 
   render() {
+    injectTapEventPlugin();    
     const muiTheme = getMuiTheme();
+
+    const styles = {
+      appbar: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+      },
+      content: {
+        marginTop: 64,
+      },
+    };
 
     return (
       <div>
@@ -29,17 +43,18 @@ class App extends React.Component {
           meta={[
             { 'char-set': 'utf-8' },
             { name: 'description', content: 'Share Everything' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+            { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' }
           ]}
         />             
         <MuiThemeProvider muiTheme={muiTheme}>        
           <div>
-            <AppBar title="Share Everything" />
-
-            <Router history={browserHistory}>
-              <Route path="/" component={Grid}>
-              </Route>
-            </Router>
+            <AppBar title="Share Everything" showMenuIconButton={false} style={styles.appbar} />
+            <div style={styles.content}> 
+              <Router history={browserHistory}>
+                <Route path="/" component={Items} />
+                <Route path="/details/:id" component={ItemDetails} />
+              </Router>
+            </div>
           </div>
         </MuiThemeProvider>
       </div>

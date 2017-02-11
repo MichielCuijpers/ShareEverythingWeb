@@ -63,7 +63,7 @@ const Payment = ({ items, resetCart }, { router }) => {
 
   const itemsInCart = items
     .filter(item => item.inCart)
-    .map(({ title, price, inCartAmount }) => {
+    .map(({ title, price, inCartAmount, id }) => {
       let amount = `For ${inCartAmount} days`;
       if (inCartAmount === 1) {
         amount = amount.substring(0, amount.length - 1);
@@ -71,6 +71,7 @@ const Payment = ({ items, resetCart }, { router }) => {
 
       return (
         <ListItem
+          key={id}
           primaryText={title}
           secondaryText={amount}
           rightAvatar={

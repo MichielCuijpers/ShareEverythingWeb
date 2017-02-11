@@ -8,12 +8,14 @@ import { connect } from 'react-redux';
 import Items from './Items';
 import BottomButton from './BottomButton';
 
-const Home = ({ numberOfItemsInCart }, { router }) => {
-  const onPay = () => {
-    router.push('/payment');
+class Home extends React.Component {
+  onPay = () => {
+    this.context.router.push('/payment');
   };
 
-  const renderBottomButton = () => {
+  renderBottomButton = () => {
+    const { numberOfItemsInCart } = this.props;
+
     if (numberOfItemsInCart) {
       let label = `Order ${numberOfItemsInCart} items`;
       if (numberOfItemsInCart === 1) {
@@ -27,7 +29,7 @@ const Home = ({ numberOfItemsInCart }, { router }) => {
             fullWidth
             labelPosition="before"
             secondary
-            onTouchTap={onPay}
+            onTouchTap={this.onPay}
             icon={<Right />}
           />
         </BottomButton>
@@ -37,43 +39,47 @@ const Home = ({ numberOfItemsInCart }, { router }) => {
     return null;
   };
 
-  const styles = {
-    appbar: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-    },
-    container: {
-      marginTop: 64,
-      marginBottom: numberOfItemsInCart === 0 ? 0 : 76,
-    },
-    header: {
-      padding: 32,
-    },
-    headerTitle: {
-      fontSize: 24,
-      textAlign: 'center',
-    },
-    search: {
-      marginTop: 32,
-    }
-  };
+  render() {
+    const { numberOfItemsInCart } = this.props;
 
-  return (
-    <div>
-      <AppBar title="Share Everything" style={styles.appbar} />
-      <div style={styles.container}>
-        <div style={styles.header}>
-          <div style={styles.headerTitle}>What do you need?</div>
-          <TextField hintText="Search" fullWidth style={styles.search} />
+    const styles = {
+      appbar: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+      },
+      container: {
+        marginTop: 64,
+        marginBottom: numberOfItemsInCart === 0 ? 0 : 76,
+      },
+      header: {
+        padding: 32,
+      },
+      headerTitle: {
+        fontSize: 24,
+        textAlign: 'center',
+      },
+      search: {
+        marginTop: 32,
+      }
+    };
+
+    return (
+      <div>
+        <AppBar title="Share Everything" style={styles.appbar} />
+        <div style={styles.container}>
+          <div style={styles.header}>
+            <div style={styles.headerTitle}>What do you need?</div>
+            <TextField hintText="Search" fullWidth style={styles.search} />
+          </div>
+          <Items />
         </div>
-        <Items />
+        {this.renderBottomButton()}
       </div>
-      {renderBottomButton()}
-    </div>
-  );
-};
+    );
+  }
+}
 
 Home.contextTypes = {
   router: React.PropTypes.object.isRequired

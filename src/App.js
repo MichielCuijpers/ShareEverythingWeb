@@ -12,12 +12,23 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Confirmation from './Confirmation';
 import Home from './Home';
 import ItemDetails from './ItemDetails';
+import OwnerModel from './models/OwnerModel';
 
 import rootReducer from './reducers';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    const owner = OwnerModel.load()
+      .then((res) => {
+        console.log(res);
+      }).catch((err) => {
+        console.log(err);
+      });
+    // this.setState({
+    //   owner: owner
+    // });
   }
 
   onRouteUpdate = () => {
@@ -25,12 +36,12 @@ class App extends React.Component {
   };
 
   render() {
-    injectTapEventPlugin();    
+    injectTapEventPlugin();
     const muiTheme = getMuiTheme();
 
     const store = createStore(
       rootReducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()      
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
     return (
@@ -46,13 +57,13 @@ class App extends React.Component {
             { name: 'description', content: 'Share Everything' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' }
           ]}
-        />             
-        <MuiThemeProvider muiTheme={muiTheme}>        
+        />
+        <MuiThemeProvider muiTheme={muiTheme}>
           <Provider store={store}>
             <Router history={browserHistory} onRouteUpdate={this.onRouteUpdate}>
               <Route path="/" component={Home} />
               <Route path="/details/:id" component={ItemDetails} />
-              <Route path="/confirmation" component={Confirmation} />            
+              <Route path="/confirmation" component={Confirmation} />
             </Router>
           </Provider>
         </MuiThemeProvider>

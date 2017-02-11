@@ -8,11 +8,12 @@ import Left from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import IconButton from 'material-ui/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
-import Paper from 'material-ui/Paper';
 
 import Divider from 'material-ui/Divider';
 
 import data from './data.json';
+
+import BottomButton from './BottomButton';
 
 const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { router }) => {
   const styles = {
@@ -64,16 +65,6 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
     ownerIcon: {
       marginRight: 8,
     },
-    buttonContainer: {
-      position: 'fixed',
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: '#fff',
-    },
-    button: {
-      padding: 16,
-    }
   }
 
   const onOrder = () => {
@@ -110,20 +101,16 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
           </div>
         </div>
       </div>
-      <div style={styles.buttonContainer}>
-        <Paper zDepth={1}>
-          <div style={styles.button}>
-            <RaisedButton
-              label="Order"
-              fullWidth
-              labelPosition="before"
-              secondary
-              onTouchTap={onOrder}
-              icon={<AddShoppingCart />}
-            />
-          </div>
-        </Paper>
-      </div>
+      <BottomButton>
+        <RaisedButton
+          label="Add to Cart"
+          fullWidth
+          labelPosition="before"
+          secondary
+          onTouchTap={onOrder}
+          icon={<AddShoppingCart />}
+        />
+      </BottomButton>
     </div>
   )
 };

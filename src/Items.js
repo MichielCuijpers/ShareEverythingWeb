@@ -5,18 +5,26 @@ import IconButton from 'material-ui/IconButton';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
 import Search from 'material-ui/svg-icons/action/search';
 import TextField from 'material-ui/TextField';
+import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import data from './data.json';
 
+import BottomButton from './BottomButton';
+
 const Items = (props, { router }) => {
-  const onTouchTap = (id) => {
+  const showDetails = (id) => {
     router.push(`/details/${id}`);
   };
+
+  const finishOrder = (id) => {
+    router.push(`/confirmation`);
+  }
 
   const items = data.map(({ title, id, price, imageUrl }) => {
     return (
       <GridTile
-        onTouchTap={() => onTouchTap(id)}
+        onTouchTap={() => showDetails(id)}
         key={id}
         title={title}
         subtitle={<span>{price}</span>}
@@ -36,6 +44,7 @@ const Items = (props, { router }) => {
     },
     container: {
       marginTop: 64,
+      marginBottom: 76,
     },
     gridList: {
       backgroundColor: '#f6f6f6',
@@ -69,6 +78,16 @@ const Items = (props, { router }) => {
           {items}
         </GridList>      
       </div>
+      <BottomButton>
+        <RaisedButton
+          label="Order"
+          fullWidth
+          labelPosition="before"
+          secondary
+          onTouchTap={finishOrder}
+          icon={<Right />}
+        />
+      </BottomButton>
     </div>
   )
 };

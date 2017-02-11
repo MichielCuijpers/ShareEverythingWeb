@@ -23,7 +23,7 @@ const Line = ({ title, price }) => {
   return (
     <div style={styles.line}>
       <div style={styles.title}>{ title }</div>
-      <div style={styles.price}>{ price }</div>
+      <div style={styles.price}>{ price.toFixed(2) }</div>
     </div>
   );
 }

@@ -4,12 +4,14 @@ import Sifter from 'sifter';
 
 import { connect } from 'react-redux';
 
+import { getImageUrl } from './helpers';
+
 const Items = ({ items = [] }, { router }) => {
   const showDetails = (id) => {
     router.push(`/details/${id}`);
   };
 
-  const components = items.map(({ title, id, price, imageUrl, inCart }) => {
+  const components = items.map(({ title, id, price, inCart }) => {
     const titleBackground = inCart ? 'rgba(14, 86, 115, 0.7)' : 'rgba(0, 0, 0, 0.4)';
 
     return (
@@ -20,7 +22,7 @@ const Items = ({ items = [] }, { router }) => {
         subtitle={<span>{price}</span>}
         titleBackground={titleBackground}
       >
-        <img src={imageUrl} />
+        <img src={getImageUrl(id)} />
       </GridTile>
     );
   });

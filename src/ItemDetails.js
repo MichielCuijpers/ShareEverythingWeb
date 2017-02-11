@@ -20,6 +20,8 @@ import BottomButton from './BottomButton';
 import { addToCart } from './actions/items';
 import { resetSearch } from './actions/search';
 
+import { getImageUrl } from './helpers';
+
 const styles = {
   appbar: {
     position: 'fixed',
@@ -97,7 +99,7 @@ class ItemDetails extends React.Component {
   };
 
   render() {
-    const { title, description, price, imageUrl, owner } = this.props;
+    const { id, title, description, price, owner } = this.props;
     const { router } = this.context;
 
     const actions = [
@@ -125,7 +127,7 @@ class ItemDetails extends React.Component {
         />
         <div style={styles.container}>
           <div style={styles.imageContainer}>
-            <img src={imageUrl} style={styles.image} />
+            <img src={getImageUrl(id)} style={styles.image} />
           </div>
           <div style={styles.content}>
             <div style={styles.header}>

@@ -13,12 +13,13 @@ import { List, ListItem } from 'material-ui/List';
 import { connect } from 'react-redux';
 
 import { resetCart } from './actions/items';
+import { resetSearch } from './actions/search';
 
 import BottomButton from './BottomButton';
 
 
 // eslint-disable-next-line
-const Payment = ({ items, resetCart }, { router }) => {
+const Payment = ({ items, resetCart, resetSearch }, { router }) => {
   const styles = {
     appbar: {
       position: 'fixed',
@@ -58,6 +59,7 @@ const Payment = ({ items, resetCart }, { router }) => {
 
   const onDelete = () => {
     resetCart();
+    resetSearch();
     router.goBack();
   };
 
@@ -156,6 +158,9 @@ const mapDispatchToProps = (dispatch) => {
     resetCart: () => {
       dispatch(resetCart());
     },
+    resetSearch: () => {
+      dispatch(resetSearch());
+    }
   };
 };
 

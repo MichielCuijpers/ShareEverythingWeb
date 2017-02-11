@@ -18,6 +18,7 @@ import Divider from 'material-ui/Divider';
 import BottomButton from './BottomButton';
 
 import { addToCart } from './actions/items';
+import { resetSearch } from './actions/search';
 
 const styles = {
   appbar: {
@@ -83,6 +84,7 @@ class ItemDetails extends React.Component {
   onAddToCart = () => {
     this.setState({ open: false });
     this.props.addToCart(this.state.amount);
+    this.props.resetSearch();
     this.context.router.goBack();
   };
 
@@ -189,6 +191,9 @@ const mapDispatchToProps = (dispatch, { params }) => {
     addToCart: (amount) => {
       dispatch(addToCart({ id: params.id, amount }));
     },
+    resetSearch: () => {
+      dispatch(resetSearch());
+    }
   };
 };
 

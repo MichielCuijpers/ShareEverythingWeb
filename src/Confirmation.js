@@ -9,8 +9,9 @@ import { connect } from 'react-redux';
 import BottomButton from './BottomButton';
 
 import { resetCart } from './actions/items';
+import { resetSearch } from './actions/search';
 
-const Confirmation = ({ resetCart }, { router }) => {
+const Confirmation = ({ resetCart, resetSearch }, { router }) => {
   const styles = {
     appbar: {
       position: 'fixed',
@@ -38,6 +39,7 @@ const Confirmation = ({ resetCart }, { router }) => {
 
   const onHome = () => {
     resetCart();
+    resetSearch();
     router.replace('/');
   };
 
@@ -81,6 +83,9 @@ const mapDispatchToProps = (dispatch) => {
     resetCart: () => {
       dispatch(resetCart());
     },
+    resetSearch: () => {
+      dispatch(resetSearch());
+    },    
   };
 };
 

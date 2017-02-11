@@ -25,7 +25,6 @@ const Items = ({ items = [] }, { router }) => {
         title={title}
         subtitle={<span>{price}</span>}
         titleBackground={titleBackground}
-        //actionIcon={<IconButton><AddShoppingCart color="white" /></IconButton>}        
       >
         <img src={imageUrl} />
       </GridTile>

@@ -5,10 +5,14 @@ import Left from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
+import { connect } from 'react-redux';
 
 import BottomButton from './BottomButton';
 
-const Confirmation = (props, { router }) => {
+import { resetCart } from './actions/items';
+
+
+const Confirmation = ({ resetCart }, { router }) => {
   const styles = {
     appbar: {
       position: 'fixed',
@@ -35,6 +39,7 @@ const Confirmation = (props, { router }) => {
   }
 
   const onHome = () => {
+    resetCart();
     router.replace('/');
   }
 
@@ -73,4 +78,12 @@ Confirmation.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default Confirmation;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetCart: () => {
+      dispatch(resetCart());
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Confirmation);

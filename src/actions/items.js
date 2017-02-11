@@ -1,5 +1,6 @@
 import {
   ADD_TO_CART,
+  RESET_CART,
 } from '../reducers/items';
 
 export const addToCart = (id) => {
@@ -8,3 +9,9 @@ export const addToCart = (id) => {
     id,
   };
 };
+
+export const resetCart = () => {
+  return {
+    type: RESET_CART,
+  };
+}

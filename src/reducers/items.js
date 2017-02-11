@@ -1,4 +1,5 @@
 export const ADD_TO_CART = 'items/ADD_TO_CART';
+export const RESET_CART = 'items/RESET_CART';
 
 import data from '../data.json';
 
@@ -21,6 +22,12 @@ export default function styles(state = initialState, action) {
 
         return itemCopy;
       });
+    case RESET_CART:
+      return state.map(item => {
+        const itemCopy = { ...item };
+        itemCopy.inCart = false;
+        return itemCopy;
+      })
     default:
       return state;
   }

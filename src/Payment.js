@@ -84,7 +84,7 @@ const Payment = ({ items }, { router }) => {
         <RaisedButton
           label="Accept & Pay"
           fullWidth
-          labelPosition="after"
+          labelPosition="before"
           secondary
           onTouchTap={onConfirmation}
           icon={<Right />}

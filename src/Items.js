@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
 import Search from 'material-ui/svg-icons/action/search';
@@ -28,6 +29,15 @@ const Items = (props, { router }) => {
   });
 
   const styles = {
+    appbar: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+    },
+    container: {
+      marginTop: 64,
+    },
     gridList: {
       backgroundColor: '#f6f6f6',
       flex: 1,
@@ -47,16 +57,19 @@ const Items = (props, { router }) => {
 
   return (
     <div>
-      <div style={styles.header}>
-        <div style={styles.headerTitle}>What do you need?</div>
-        <TextField hintText="Search" fullWidth style={styles.search} />
+      <AppBar title="Share Everything" style={styles.appbar} />      
+      <div style={styles.container}>
+        <div style={styles.header}>
+          <div style={styles.headerTitle}>What do you need?</div>
+          <TextField hintText="Search" fullWidth style={styles.search} />
+        </div>
+        <GridList
+          cellHeight={180}
+          style={styles.gridList}
+        >
+          {items}
+        </GridList>      
       </div>
-      <GridList
-        cellHeight={180}
-        style={styles.gridList}
-      >
-        {items}
-      </GridList>      
     </div>
   )
 };

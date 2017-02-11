@@ -4,7 +4,6 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -19,18 +18,6 @@ class App extends React.Component {
   render() {
     injectTapEventPlugin();    
     const muiTheme = getMuiTheme();
-
-    const styles = {
-      appbar: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-      },
-      content: {
-        marginTop: 64,
-      },
-    };
 
     return (
       <div>
@@ -47,15 +34,10 @@ class App extends React.Component {
           ]}
         />             
         <MuiThemeProvider muiTheme={muiTheme}>        
-          <div>
-            <AppBar title="Share Everything" showMenuIconButton={false} style={styles.appbar} />
-            <div style={styles.content}> 
-              <Router history={browserHistory}>
-                <Route path="/" component={Items} />
-                <Route path="/details/:id" component={ItemDetails} />
-              </Router>
-            </div>
-          </div>
+          <Router history={browserHistory}>
+            <Route path="/" component={Items} />
+            <Route path="/details/:id" component={ItemDetails} />
+          </Router>
         </MuiThemeProvider>
       </div>
     );

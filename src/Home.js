@@ -9,6 +9,14 @@ import Items from './Items';
 import BottomButton from './BottomButton';
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      search: '',
+    };
+  }
+
   onPay = () => {
     this.context.router.push('/payment');
   };
@@ -71,9 +79,15 @@ class Home extends React.Component {
         <div style={styles.container}>
           <div style={styles.header}>
             <div style={styles.headerTitle}>What do you need?</div>
-            <TextField hintText="Search" fullWidth style={styles.search} />
+            <TextField
+              value={this.state.search}
+              onChange={(e, search) => this.setState({ search })}
+              hintText="Search"
+              fullWidth
+              style={styles.search}
+            />
           </div>
-          <Items />
+          <Items search={this.state.search} />
         </div>
         {this.renderBottomButton()}
       </div>

@@ -180,7 +180,8 @@ ItemDetails.contextTypes = {
 };
 
 const mapStateToProps = ({ items }, { params }) => {
-  return items[params.id];
+  // eslint-disable-next-line
+  return items.find(item => item.id == params.id);
 };
 
 const mapDispatchToProps = (dispatch, { params }) => {

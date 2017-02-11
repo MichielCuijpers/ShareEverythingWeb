@@ -78,8 +78,9 @@ const Payment = ({ items, resetCart }, { router }) => {
             <Avatar
               color="#000"
               backgroundColor="#fff"
+              style={{ justifyContent: 'flex-start' }}
             >
-              {price.toFixed(2)}
+              {(inCartAmount * price).toFixed(2)}
             </Avatar>
           }
         />
@@ -88,7 +89,7 @@ const Payment = ({ items, resetCart }, { router }) => {
 
   const total = items
     .filter(item => item.inCart)
-    .reduce((acc, item) => acc + item.price, 0);
+    .reduce((acc, item) => acc + (item.price * item.inCartAmount), 0);
 
   return (
     <div>
@@ -110,6 +111,7 @@ const Payment = ({ items, resetCart }, { router }) => {
               <Avatar
                 color="#000"
                 backgroundColor="#fff"
+                style={{ justifyContent: 'flex-start' }}
               >
                 {total.toFixed(2)}
               </Avatar>

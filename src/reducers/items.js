@@ -11,6 +11,16 @@ const initialState = data.map(item => {
 
 export default function styles(state = initialState, action) {
   switch (action.type) {
+    case ADD_TO_CART:
+      return state.map(item => {
+        const itemCopy = { ...item };
+
+        if (itemCopy.id == action.id) {
+          itemCopy.inCart = true;
+        }
+
+        return itemCopy;
+      });
     default:
       return state;
   }

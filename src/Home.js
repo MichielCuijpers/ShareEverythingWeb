@@ -13,16 +13,8 @@ import Items from './Items';
 import BottomButton from './BottomButton';
 
 const Home = (props, { router }) => {
-  const fn = {
-    showDetails: (id) => {
-      router.push(`/details/${id}`);
-    },
-    addToCart: (id) => {
-      console.log('add to cart');
-    },
-    finishOrder: (id) => {
-      router.push(`/confirmation`);
-    },
+  const finishOrder = (id) => {
+    router.push(`/confirmation`);
   };
 
   const styles = {
@@ -56,7 +48,7 @@ const Home = (props, { router }) => {
           <div style={styles.headerTitle}>What do you need?</div>
           <TextField hintText="Search" fullWidth style={styles.search} />
         </div>
-        <Items fn={fn} />
+        <Items />
       </div>
       <BottomButton>
         <RaisedButton
@@ -64,7 +56,7 @@ const Home = (props, { router }) => {
           fullWidth
           labelPosition="before"
           secondary
-          onTouchTap={fn.finishOrder}
+          onTouchTap={finishOrder}
           icon={<Right />}
         />
       </BottomButton>

@@ -10,11 +10,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import { connect } from 'react-redux';
 
-const Items = ({ items = [], fn }) => {
+const Items = ({ items = [] }, { router }) => {
+  const showDetails = (id) => {
+    router.push(`/details/${id}`);
+  };
+
   const components = items.map(({ title, id, price, imageUrl }) => {
     return (
       <GridTile
-        onTouchTap={() => fn.showDetails(id)}
+        onTouchTap={() => showDetails(id)}
         key={id}
         title={title}
         subtitle={<span>{price}</span>}
@@ -43,21 +47,14 @@ const Items = ({ items = [], fn }) => {
   );
 };
 
+Items.contextTypes = {
+  router: React.PropTypes.object.isRequired,
+};
+
 const mapStateToProps = ({ items }) => {
   return {
     items,
   }
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     openMeetingInput: () => {
-//       return dispatch(openMeetingInput());
-//     },
-//     closeMeetingInput: () => {
-//       return dispatch(closeMeetingInput());
-//     },
-//   };
-// };
 
 export default connect(mapStateToProps, null)(Items);

@@ -14,7 +14,9 @@ import Divider from 'material-ui/Divider';
 
 import BottomButton from './BottomButton';
 
-const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { router }) => {
+import { addToCart } from './actions/items';
+
+const ItemDetails = ({ id, title, description, price, imageUrl, owner, addToCart }, { router }) => {
   const styles = {
     appbar: {
       position: 'fixed',
@@ -66,7 +68,8 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
     },
   }
 
-  const onOrder = () => {
+  const onAddToCart = () => {
+    addToCart();
     router.goBack();
   }
 
@@ -106,7 +109,7 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
           fullWidth
           labelPosition="before"
           secondary
-          onTouchTap={onOrder}
+          onTouchTap={onAddToCart}
           icon={<AddShoppingCart />}
         />
       </BottomButton>
@@ -122,4 +125,12 @@ const mapStateToProps = ({ items }, { params }) => {
   return items[params.id];
 };
 
-export default connect(mapStateToProps, null)(ItemDetails);
+const mapDispatchToProps = (dispatch, { params }) => {
+  return {
+    addToCart: () => {
+      dispatch(addToCart(params.id));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemDetails);

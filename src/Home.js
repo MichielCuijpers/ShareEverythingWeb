@@ -3,10 +3,13 @@ import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
 import { connect } from 'react-redux';
+
 
 import Items from './Items';
 import BottomButton from './BottomButton';
+import Logo from './Logo';
 
 class Home extends React.Component {
   constructor(props) {
@@ -78,7 +81,11 @@ class Home extends React.Component {
 
     return (
       <div>
-        <AppBar title="Share Everything" style={styles.appbar} />
+        <AppBar
+          title="Share Everything"
+          style={styles.appbar}
+          iconElementLeft={<IconButton><Logo color="#f99" /></IconButton>}
+        />
         <div style={styles.container}>
           <div style={styles.header}>
             <div style={styles.headerTitle}>What do you need?</div>

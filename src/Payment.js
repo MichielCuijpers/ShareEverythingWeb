@@ -3,11 +3,14 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Left from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
+import DeleteForever from 'material-ui/svg-icons/action/delete-forever';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 
 import { connect } from 'react-redux';
+
+import { resetCart } from './actions/items';
 
 import BottomButton from './BottomButton';
 
@@ -28,7 +31,7 @@ const Line = ({ title, price }) => {
   );
 };
 
-const Payment = ({ items }, { router }) => {
+const Payment = ({ items, resetCart }, { router }) => {
   const styles = {
     appbar: {
       position: 'fixed',
@@ -46,6 +49,15 @@ const Payment = ({ items }, { router }) => {
     divider: {
       marginTop: 16,
       marginBottom: 16,
+    },
+    buttons: {
+      display: 'flex',
+    },
+    accept: {
+      flex: 1,
+    },
+    delete: {
+      marginRight: 12,
     }
   };
 
@@ -55,6 +67,11 @@ const Payment = ({ items }, { router }) => {
 
   const onConfirmation = () => {
     router.push('/confirmation');
+  };
+
+  const onDelete = () => {
+    resetCart();
+    router.goBack();
   };
 
   const itemsInCart = items
@@ -81,14 +98,22 @@ const Payment = ({ items }, { router }) => {
         </div>
       </div>
       <BottomButton>
-        <RaisedButton
-          label="Accept & Pay"
-          fullWidth
-          labelPosition="before"
-          secondary
-          onTouchTap={onConfirmation}
-          icon={<Right />}
-        />
+        <div style={styles.buttons}>
+          <RaisedButton
+            backgroundColor="#bf7e7e"
+            icon={<DeleteForever color="#fff" />}
+            style={styles.delete}
+            onTouchTap={onDelete}
+          />
+          <RaisedButton
+            label="Accept & Pay"
+            labelPosition="before"
+            secondary
+            onTouchTap={onConfirmation}
+            icon={<Right />}
+            style={styles.accept}
+          />
+        </div>
       </BottomButton>
     </div>
   );
@@ -104,4 +129,12 @@ const mapStateToProps = ({ items }) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Payment);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetCart: () => {
+      dispatch(resetCart());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Payment);

@@ -8,10 +8,9 @@ import Left from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import IconButton from 'material-ui/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
+import { connect } from 'react-redux';
 
 import Divider from 'material-ui/Divider';
-
-import data from './data.json';
 
 import BottomButton from './BottomButton';
 
@@ -116,14 +115,11 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
 };
 
 ItemDetails.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object.isRequired,
 };
 
+const mapStateToProps = ({ items }, { params }) => {
+  return items[params.id];
+};
 
-const ItemDetailsRetrieve = ({ params }) => {
-  const props = data[params.id - 1];
-
-  return <ItemDetails {...props} />
-}
-
-export default ItemDetailsRetrieve;
+export default connect(mapStateToProps, null)(ItemDetails);

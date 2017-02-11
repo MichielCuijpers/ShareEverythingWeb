@@ -8,9 +8,10 @@ import TextField from 'material-ui/TextField';
 import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { connect } from 'react-redux';
 
-const Items = ({ data, fn }) => {
-  const items = data.map(({ title, id, price, imageUrl }) => {
+const Items = ({ items = [], fn }) => {
+  const components = items.map(({ title, id, price, imageUrl }) => {
     return (
       <GridTile
         onTouchTap={() => fn.showDetails(id)}
@@ -37,9 +38,26 @@ const Items = ({ data, fn }) => {
       cellHeight={180}
       style={styles.gridList}
     >
-      {items}
+      {components}
     </GridList>      
   );
 };
 
-export default Items;
+const mapStateToProps = ({ items }) => {
+  return {
+    items,
+  }
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     openMeetingInput: () => {
+//       return dispatch(openMeetingInput());
+//     },
+//     closeMeetingInput: () => {
+//       return dispatch(closeMeetingInput());
+//     },
+//   };
+// };
+
+export default connect(mapStateToProps, null)(Items);

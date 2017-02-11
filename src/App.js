@@ -1,6 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Router, Route, Link, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -10,6 +12,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Confirmation from './Confirmation';
 import Home from './Home';
 import ItemDetails from './ItemDetails';
+
+import rootReducer from './reducers';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +27,11 @@ class App extends React.Component {
   render() {
     injectTapEventPlugin();    
     const muiTheme = getMuiTheme();
+
+    const store = createStore(
+      rootReducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()      
+    );
 
     return (
       <div>
@@ -39,11 +48,13 @@ class App extends React.Component {
           ]}
         />             
         <MuiThemeProvider muiTheme={muiTheme}>        
-          <Router history={browserHistory} onRouteUpdate={this.onRouteUpdate}>
-            <Route path="/" component={Home} />
-            <Route path="/details/:id" component={ItemDetails} />
-            <Route path="/confirmation" component={Confirmation} />            
-          </Router>
+          <Provider store={store}>
+            <Router history={browserHistory} onRouteUpdate={this.onRouteUpdate}>
+              <Route path="/" component={Home} />
+              <Route path="/details/:id" component={ItemDetails} />
+              <Route path="/confirmation" component={Confirmation} />            
+            </Router>
+          </Provider>
         </MuiThemeProvider>
       </div>
     );

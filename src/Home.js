@@ -56,10 +56,7 @@ const Home = (props, { router }) => {
           <div style={styles.headerTitle}>What do you need?</div>
           <TextField hintText="Search" fullWidth style={styles.search} />
         </div>
-        <Items 
-          data={data}
-          fn={fn}
-        />
+        <Items fn={fn} />
       </div>
       <BottomButton>
         <RaisedButton

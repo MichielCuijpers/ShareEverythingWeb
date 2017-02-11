@@ -162,6 +162,7 @@ class ItemDetails extends React.Component {
           onRequestClose={this.handleClose}
         >
           <TextField
+            id="textfield"
             value={this.state.amount}
             onChange={(e, newValue) => {
               const amount = isNaN(+newValue) ? 0 : +newValue;

@@ -11,13 +11,3 @@ const Logo = () => (
 );
 
 export default Logo;
-/*
-    <style>
-      .cls-1 {
-        fill="none" stroke="#fff" strokeMiterlimit={10} strokeWidth="23px"
-      }
-      
-      .cls-2 {
-        fill: #fff;
-      }
-    </style>    */

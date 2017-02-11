@@ -1,14 +1,16 @@
 import React from 'react';
 
 import AppBar from 'material-ui/AppBar';
-import Left from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
+import { connect } from 'react-redux';
 
 import BottomButton from './BottomButton';
 
-const Confirmation = (props, { router }) => {
+import { resetCart } from './actions/items';
+
+const Confirmation = ({ resetCart }, { router }) => {
   const styles = {
     appbar: {
       position: 'fixed',
@@ -27,16 +29,17 @@ const Confirmation = (props, { router }) => {
       textAlign: 'center',
     },
     emoji: {
-      textAlign: 'center',      
+      textAlign: 'center',
       paddingTop: 48,
-      fontSize: 112, 
-      paddingBottom: 24,     
+      fontSize: 112,
+      paddingBottom: 24,
     },
-  }
+  };
 
   const onHome = () => {
-    router.goBack();
-  }
+    resetCart();
+    router.replace('/');
+  };
 
   return (
     <div>
@@ -47,9 +50,9 @@ const Confirmation = (props, { router }) => {
         onLeftIconButtonTouchTap={onHome}
       />
       <div style={styles.container}>
-          <div style={styles.emoji}> 
-            🎉
-          </div>        
+        <div style={styles.emoji}>
+          🎉
+          </div>
         <div style={styles.content}>
           <div>Congratulations.</div>
           <div>Your items are ordered and coming your way.</div>
@@ -66,11 +69,19 @@ const Confirmation = (props, { router }) => {
         />
       </BottomButton>
     </div>
-  )
+  );
 };
 
 Confirmation.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-export default Confirmation;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetCart: () => {
+      dispatch(resetCart());
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Confirmation);

@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 
 const BottomButton = ({ children }) => {
-  const styles={
+  const styles = {
     buttonContainer: {
       position: 'fixed',
       left: 0,
@@ -23,6 +23,6 @@ const BottomButton = ({ children }) => {
       </Paper>
     </div>
   );
-}
+};
 
 export default BottomButton;

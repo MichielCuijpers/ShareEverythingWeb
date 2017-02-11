@@ -1,47 +1,47 @@
 import React from 'react';
-import LightWallet from 'react-lightwallet';
-import web3 from 'web3';
- 
+import Helmet from 'react-helmet';
+import { Router, Route, Link, browserHistory } from 'react-router'
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import Grid from './Grid';
+
 class App extends React.Component {
-  getInitialState() {
-    return {address: null};
+  constructor(props) {
+    super(props);
   }
-  
-  onChangeSelectedAddress() {
-      this.setState({address: address});
-  }
-
-  sendTransaction() {
-      // Here you can send a transaction normally as you would do using 
-      // a node account. The HookedWeb3Provider will intercept the transaction 
-      // and in case the sender address is a light wallet one, it will 
-      // manually sign the transaction using the pk available on the keystore 
-      // and broadcast the transaction using your node. 
-      web3.eth.sendTransaction({
-          from: this.state.address.
-          to: <some address>,
-          value: Math.pow(10,18)
-      }, function(err, hash) {
-          if (err) {
-              console.log('Error sending transaction: ' + err);
-          } else {
-              console.log('Transaction has been sent: ' + hash);
-          }
-      });
-          
-  }
-
 
   render() {
+    const muiTheme = getMuiTheme();
+
     return (
-      <div className="App">
-        <LightWallet 
-            onChangeSelectedAddress        = {this.onChangeSelectedAddress}
-            enableHookedWeb3Provider       = 'true'
-            showAddressBalance             = 'true'
-            saveKeystoreToDiskAfterChanges = 'true'
-        />
-        <button onClick={this.sendTransaction}>Send!</button>
+      <div>
+        <Helmet
+          title="Share Everything"
+          titleTemplate="%s"
+          link={[
+            { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
+          ]}
+          meta={[
+            { 'char-set': 'utf-8' },
+            { name: 'description', content: 'Share Everything' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+          ]}
+        />             
+        <MuiThemeProvider muiTheme={muiTheme}>        
+          <div>
+            <AppBar title="Share Everything" />
+
+            <Router history={browserHistory}>
+              <Route path="/" component={Grid}>
+              </Route>
+            </Router>
+          </div>
+        </MuiThemeProvider>
       </div>
     );
   }

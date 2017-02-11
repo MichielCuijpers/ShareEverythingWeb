@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "category": "Lights",
+    "title": "Strobe lights",
+    "description": "Neewer Camera Photo Video 14",
+    "price": 6.99,
+    "owner": "Emerens Joos Van Der Hout",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item1.jpg"
+  },
+  {
+    "id": 2,
+    "category": "Lights",
+    "title": "Light Stand",
+    "description": "Neewer 75",
+    "price": 1.79,
+    "owner": "Pauwel Bernard Haanraats",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item2.jpg"
+  },
+  {
+    "id": 3,
+    "category": "Lights",
+    "title": "Flash Accessory",
+    "description": "Neewer Mini Ball Head with Lock and Hot Shoe Adapter Camera Cradle",
+    "price": 1.09,
+    "owner": "Dick Kobus Alberts",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item3.jpg"
+  },
+  {
+    "id": 4,
+    "category": "Lights",
+    "title": "Diffuser",
+    "description": "Neewer 18 inches Collapsible Photography Video Light Softbox Diffuser for 75W(600W Equivalent) Ring Fluorescent Light Flash Light",
+    "price": 1.69,
+    "owner": "Manfred Wilbert Sanna",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item4.jpg"
+  },
+  {
+    "id": 5,
+    "category": "Lights",
+    "title": "Reflector",
+    "description": "Neewer 43-inch / 110cm 5-in-1 Collapsible Multi-Disc Light Reflector with Bag - Translucent, Silver, Gold, White and Black",
+    "price": 2,
+    "owner": "Emerens Joos Van Der Hout",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item5.jpg"
+  },
+  {
+    "id": 6,
+    "category": "Lights",
+    "title": "On camera Video lights",
+    "description": "Neewer Photography 160 LED Studio Lighting Kit, including (2)CN-160 Dimmable Ultra High Power Panel Digital Camera DSLR Camcorder LED Video Light (2)32",
+    "price": 7.99,
+    "owner": "Pauwel Bernard Haanraats",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item6.jpg"
+  },
+  {
+    "id": 7,
+    "category": "Lights",
+    "title": "Battery chargers",
+    "description": "DSTE 2x NP-F550 Battery + DC01 Travel and Car Charger Adapter for Sony CCD-RV100 CCD-RV200 SC5 SC9 TR1 TR940 TR917 Camera CN-160 CN-216 CN-304 YN 300 VL600 LED Video Light as NP-F330 NP-F530 NP-F570",
+    "price": 2.19,
+    "owner": "Dick Kobus Alberts",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item7.jpg"
+  },
+  {
+    "id": 8,
+    "category": "Lights",
+    "title": "Battery camera",
+    "description": "Kastar Battery (2-Pack) for Sony NP-F970 NP-F960 F970 F960 F975 F950 and DCR-VX2100 HDR-AX2000 FX1 FX7 FX1000 HVR-HD1000U V1U Z1P Z1U Z5U Z7U HXR-MC2000U FS100U FS700U and LED Video Light",
+    "price": 3.39,
+    "owner": "Manfred Wilbert Sanna",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item8.jpg"
+  },
+  {
+    "id": 9,
+    "category": "Lights",
+    "title": "Battery camera",
+    "description": "Bonacell 8700mAh 2 Pack Replacement Sony NP-F960/ NP-F970 Battery and Charger Kit for Sony DCR-VX2100 HDR-AX2000 FX1 FX7 FX1000 HVR-HD1000U V1U Z1P Z1U Z5U Z7U HXR-MC2000U FS100U FS700U and More",
+    "price": 3.99,
+    "owner": "Emerens Joos Van Der Hout",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item9.jpg"
+  },
+  {
+    "id": 10,
+    "category": "Lights",
+    "title": "Microphone",
+    "description": "Rode VideoMicro Compact On-Camera Microphone with Rycote Lyre Shock Mount",
+    "price": 5.99,
+    "owner": "Pauwel Bernard Haanraats",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item10.jpg"
+  },
+  {
+    "id": 11,
+    "category": "Sound",
+    "title": "Audio Pack",
+    "description": "Peavey Audio Performer Pack",
+    "price": 39.99,
+    "owner": "Dick Kobus Alberts",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item11.jpg"
+  },
+  {
+    "id": 12,
+    "category": "Sound",
+    "title": "Microphone Cables",
+    "description": "CBI MLC20 Low Z XLR Microphone Cable, 20 Foot",
+    "price": 0.5,
+    "owner": "Manfred Wilbert Sanna",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item12.jpg"
+  },
+  {
+    "id": 13,
+    "category": "Sound",
+    "title": "Stage speaker stands",
+    "description": "Starument Pair of Tripod PA Speaker Stands and Cable Ties Kit To Secure Cable to Speaker stand (2 Stands)",
+    "price": 3.49,
+    "owner": "Emerens Joos Van Der Hout",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item13.jpg"
+  },
+  {
+    "id": 14,
+    "category": "Sound",
+    "title": "Earphones package",
+    "description": "Anchor PRO-540 Prolink Package w/ 4 H2000 Headsets - New",
+    "price": 348.89,
+    "owner": "Pauwel Bernard Haanraats",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item14.jpg"
+  },
+  {
+    "id": 15,
+    "category": "Sound",
+    "title": "Studio Recording equipment",
+    "description": "Edirol/Roland 4-Channel Digital Video Mixer with Effects, HDMI In/Out, USB Streaming, HDCP Support, Built-in Multiviewer with Touch Control",
+    "price": 173.6,
+    "owner": "Dick Kobus Alberts",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item15.jpg"
+  },
+  {
+    "id": 16,
+    "category": "Sound",
+    "title": "Wireless microphones",
+    "description": "Movo Wireless UHF Quad Lavalier System with 4 Bodypack Transmitters, 2 Portable Receivers, and 2-Channel Audio Mixer for DSLR Cameras & Camcorders",
+    "price": 59.96,
+    "owner": "Manfred Wilbert Sanna",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item16.jpg"
+  },
+  {
+    "id": 17,
+    "category": "Sound",
+    "title": "Complete Tripod",
+    "description": "Fancierstudio FC270A Camcorder Tripod Fluid Drag Head Kit",
+    "price": 11.99,
+    "owner": "Emerens Joos Van Der Hout",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item17.jpg"
+  },
+  {
+    "id": 18,
+    "category": "Sound",
+    "title": "Complete Tripod Mount",
+    "description": "Dolica LT-D100 Professional Lightweight and Heavy Duty Tripod Dolly with Adjustable Leg Mounts",
+    "price": 3.99,
+    "owner": "Pauwel Bernard Haanraats",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item18.jpg"
+  },
+  {
+    "id": 19,
+    "category": "Sound",
+    "title": "Cables",
+    "description": "HDMI Cable 10 FT (4K UHD HDMI 2.0 Ready) - Braided Cord - Ultra High Speed 18Gbps - Gold Plated Connectors - Ethernet & Audio Return - Video 4K 2160p HD 1080p 3D - Xbox PlayStation PS3 PS4 PC Apple TV",
+    "price": 1.3,
+    "owner": "Dick Kobus Alberts",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item19.jpg"
+  },
+  {
+    "id": 20,
+    "category": "Sound",
+    "title": "Projector",
+    "description": "ViewSonic LS820 3500 Lumens 1080p HDMI Ultra Short Throw Laser Projector",
+    "price": 299.99,
+    "owner": "Manfred Wilbert Sanna",
+    "imageUrl": "https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item20.jpg"
+  }
+]

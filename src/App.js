@@ -12,8 +12,10 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Confirmation from './Confirmation';
 import Home from './Home';
 import ItemDetails from './ItemDetails';
+import Payment from './Payment'
 
 import rootReducer from './reducers';
+import customTheme from './customTheme';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class App extends React.Component {
 
   render() {
     injectTapEventPlugin();    
-    const muiTheme = getMuiTheme();
+    const muiTheme = getMuiTheme(customTheme);
 
     const store = createStore(
       rootReducer,
@@ -52,6 +54,7 @@ class App extends React.Component {
             <Router history={browserHistory} onRouteUpdate={this.onRouteUpdate}>
               <Route path="/" component={Home} />
               <Route path="/details/:id" component={ItemDetails} />
+              <Route path="/payment" component={Payment} />                          
               <Route path="/confirmation" component={Confirmation} />            
             </Router>
           </Provider>

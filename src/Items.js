@@ -15,13 +15,16 @@ const Items = ({ items = [] }, { router }) => {
     router.push(`/details/${id}`);
   };
 
-  const components = items.map(({ title, id, price, imageUrl }) => {
+  const components = items.map(({ title, id, price, imageUrl, inCart }) => {
+    const titleBackground = inCart ? 'rgba(14, 86, 115, 0.7)' : 'rgba(0, 0, 0, 0.4)';
+
     return (
       <GridTile
         onTouchTap={() => showDetails(id)}
         key={id}
         title={title}
         subtitle={<span>{price}</span>}
+        titleBackground={titleBackground}
         //actionIcon={<IconButton><AddShoppingCart color="white" /></IconButton>}        
       >
         <img src={imageUrl} />

@@ -35,7 +35,7 @@ const Confirmation = (props, { router }) => {
   }
 
   const onHome = () => {
-    router.goBack();
+    router.replace('/');
   }
 
   return (

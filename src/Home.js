@@ -13,8 +13,8 @@ import Items from './Items';
 import BottomButton from './BottomButton';
 
 const Home = (props, { router }) => {
-  const finishOrder = (id) => {
-    router.push(`/confirmation`);
+  const onPay = () => {
+    router.push(`/payment`);
   };
 
   const styles = {
@@ -56,7 +56,7 @@ const Home = (props, { router }) => {
           fullWidth
           labelPosition="before"
           secondary
-          onTouchTap={finishOrder}
+          onTouchTap={onPay}
           icon={<Right />}
         />
       </BottomButton>

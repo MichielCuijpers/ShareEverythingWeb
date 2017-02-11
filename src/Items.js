@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
+import Sifter from 'sifter';
 
 import { connect } from 'react-redux';
 
@@ -46,10 +47,23 @@ Items.contextTypes = {
   router: React.PropTypes.object.isRequired,
 };
 
+const FilteredItems = ({ items, search }) => {
+  const sifter = new Sifter(items);
+
+  let filteredItems = items;
+
+  if (search) {
+    filteredItems = sifter.search(search, { fields: ['title', 'description'], conjunction: 'and' }).items
+      .map(({ id }) => items[id]);
+  }
+
+  return <Items items={filteredItems} />;
+};
+
 const mapStateToProps = ({ items }) => {
   return {
     items,
   };
 };
 
-export default connect(mapStateToProps, null)(Items);
+export default connect(mapStateToProps, null)(FilteredItems);

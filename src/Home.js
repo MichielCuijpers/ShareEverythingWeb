@@ -60,9 +60,12 @@ class Home extends React.Component {
       container: {
         marginTop: 64,
         marginBottom: numberOfItemsInCart === 0 ? 0 : 76,
+        minHeight: '100vh',
+        backgroundColor: '#f6f6f6'
       },
       header: {
         padding: 32,
+        backgroundColor: '#fff',
       },
       headerTitle: {
         fontSize: 24,

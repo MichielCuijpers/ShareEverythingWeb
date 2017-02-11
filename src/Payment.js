@@ -93,7 +93,7 @@ class Payment extends React.Component {
     const itemsInCart = items
       .filter(item => item.inCart)
       .map(({ title, price, inCartAmount, id }) => {
-        let amount = `For ${inCartAmount} days`;
+        let amount = `ETH for ${inCartAmount} days`;
         if (inCartAmount === 1) {
           amount = amount.substring(0, amount.length - 1);
         }
@@ -135,7 +135,7 @@ class Payment extends React.Component {
           <Divider style={styles.divider} />
           <List>
             <ListItem
-              primaryText="Total"
+              primaryText="Total ETH"
               rightAvatar={
                 <Avatar
                   color="#000"

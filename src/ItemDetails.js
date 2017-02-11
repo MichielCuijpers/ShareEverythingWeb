@@ -132,7 +132,7 @@ class ItemDetails extends React.Component {
           <div style={styles.content}>
             <div style={styles.header}>
               <div style={styles.headerTitle}>{title}</div>
-              <div style={styles.headerPrice}>{price}</div>
+              <div style={styles.headerPrice}>ETH {price}</div>
             </div>
             <div style={styles.description}>{description}</div>
             <Divider style={styles.divider} />

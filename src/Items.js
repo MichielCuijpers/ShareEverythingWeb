@@ -19,7 +19,7 @@ const Items = ({ items = [] }, { router }) => {
         onTouchTap={() => showDetails(id)}
         key={id}
         title={title}
-        subtitle={<span>{price}</span>}
+        subtitle={<span>ETH {price}</span>}
         titleBackground={titleBackground}
       >
         <img src={getImageUrl(id)} />

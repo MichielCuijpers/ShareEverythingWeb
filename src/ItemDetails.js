@@ -32,7 +32,7 @@ const styles = {
     marginBottom: 76,
   },
   imageContainer: {
-    padding: 32,
+    padding: 64,
   },
   image: {
     width: '100%',

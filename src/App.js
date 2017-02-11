@@ -8,7 +8,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Confirmation from './Confirmation';
-import Items from './Items';
+import Home from './Home';
 import ItemDetails from './ItemDetails';
 
 class App extends React.Component {
@@ -40,7 +40,7 @@ class App extends React.Component {
         />             
         <MuiThemeProvider muiTheme={muiTheme}>        
           <Router history={browserHistory} onRouteUpdate={this.onRouteUpdate}>
-            <Route path="/" component={Items} />
+            <Route path="/" component={Home} />
             <Route path="/details/:id" component={ItemDetails} />
             <Route path="/confirmation" component={Confirmation} />            
           </Router>

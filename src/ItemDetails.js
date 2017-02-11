@@ -6,6 +6,9 @@ import Star from 'material-ui/svg-icons/toggle/star';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Left from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
+import Paper from 'material-ui/Paper';
 
 import Divider from 'material-ui/Divider';
 
@@ -21,7 +24,8 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
     },
     container: {
       marginTop: 64,
-    },    
+      marginBottom: 76,
+    },
     imageContainer: {
       padding: 32,
     },
@@ -35,7 +39,7 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: 16,      
+      marginBottom: 16,
     },
     headerTitle: {
       fontSize: 24,
@@ -59,7 +63,21 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
     },
     ownerIcon: {
       marginRight: 8,
+    },
+    buttonContainer: {
+      position: 'fixed',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: '#fff',
+    },
+    button: {
+      padding: 16,
     }
+  }
+
+  const onOrder = () => {
+    router.goBack();
   }
 
   return (
@@ -69,18 +87,18 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
         style={styles.appbar}
         iconElementLeft={<IconButton><Left /></IconButton>}
         onLeftIconButtonTouchTap={router.goBack}
-      />      
+      />
       <div style={styles.container}>
         <div style={styles.imageContainer}>
           <img src={imageUrl} style={styles.image} />
         </div>
         <div style={styles.content}>
           <div style={styles.header}>
-            <div style={styles.headerTitle}>{ title }</div>
-            <div style={styles.headerPrice}>{ price }</div>          
+            <div style={styles.headerTitle}>{title}</div>
+            <div style={styles.headerPrice}>{price}</div>
           </div>
-          <div style={styles.description}>{ description }</div>
-          <Divider style={styles.divider} />   
+          <div style={styles.description}>{description}</div>
+          <Divider style={styles.divider} />
           <div style={styles.owner}>
             <div style={styles.ownerIcon}><Face color="#ccc" /></div>
             <div style={styles.ownerText}>{owner}</div>
@@ -91,6 +109,20 @@ const ItemDetails = ({ id, title, description, price, imageUrl, owner }, { route
             </div>
           </div>
         </div>
+      </div>
+      <div style={styles.buttonContainer}>
+        <Paper zDepth={1}>
+          <div style={styles.button}>
+            <RaisedButton
+              label="Order"
+              fullWidth
+              labelPosition="before"
+              secondary
+              onTouchTap={onOrder}
+              icon={<AddShoppingCart />}
+            />
+          </div>
+        </Paper>
       </div>
     </div>
   )

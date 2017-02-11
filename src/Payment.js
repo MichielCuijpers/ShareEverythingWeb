@@ -78,7 +78,7 @@ const Payment = ({ items, resetCart }, { router }) => {
             <Avatar
               color="#000"
               backgroundColor="#fff"
-              style={{ justifyContent: 'flex-start' }}
+              style={{ justifyContent: 'flex-end' }}
             >
               {(inCartAmount * price).toFixed(2)}
             </Avatar>
@@ -111,7 +111,7 @@ const Payment = ({ items, resetCart }, { router }) => {
               <Avatar
                 color="#000"
                 backgroundColor="#fff"
-                style={{ justifyContent: 'flex-start' }}
+                style={{ justifyContent: 'flex-end' }}
               >
                 {total.toFixed(2)}
               </Avatar>

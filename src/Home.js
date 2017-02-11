@@ -21,10 +21,15 @@ const Home = ({ numberOfItemsInCart }, { router }) => {
 
   const renderBottomButton = () => {
     if (numberOfItemsInCart) {
+      let label = `Order ${numberOfItemsInCart} items`;
+      if (numberOfItemsInCart === 1) {
+        label = label.substring(0, label.length - 1);
+      }
+
       return (
         <BottomButton>
           <RaisedButton
-            label="Order"
+            label={label}
             fullWidth
             labelPosition="before"
             secondary

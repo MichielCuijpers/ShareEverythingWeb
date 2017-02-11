@@ -23,6 +23,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "sifter": "^0.5.2",
+    "truffle-contract": "^1.1.10",
     "web3": "^0.18.2"
   },
   "scripts": {

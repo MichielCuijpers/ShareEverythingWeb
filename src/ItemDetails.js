@@ -19,7 +19,6 @@ import BottomButton from './BottomButton';
 
 import { addToCart } from './actions/items';
 
-
 const styles = {
   appbar: {
     position: 'fixed',
@@ -83,7 +82,7 @@ class ItemDetails extends React.Component {
 
   onAddToCart = () => {
     this.setState({ open: false });
-    this.props.addToCart();
+    this.props.addToCart(this.state.amount);
     this.context.router.goBack();
   };
 
@@ -155,7 +154,7 @@ class ItemDetails extends React.Component {
           />
         </BottomButton>
         <Dialog
-          title="For how long do you want it?"
+          title="For how many days?"
           actions={actions}
           modal={false}
           open={this.state.open}
@@ -186,8 +185,8 @@ const mapStateToProps = ({ items }, { params }) => {
 
 const mapDispatchToProps = (dispatch, { params }) => {
   return {
-    addToCart: () => {
-      dispatch(addToCart(params.id));
+    addToCart: (amount) => {
+      dispatch(addToCart({ id: params.id, amount }));
     },
   };
 };

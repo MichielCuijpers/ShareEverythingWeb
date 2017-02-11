@@ -14,7 +14,38 @@ import { resetCart } from './actions/items';
 
 import BottomButton from './BottomButton';
 
-const Line = ({ title, price }) => {
+const Line = ({ title, price, amount }) => {
+  const styles = {
+    line: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginBottom: 8,
+    },
+    title: {
+      lineHeight: 1.4,
+    },
+    amount: {
+      color: '#666',
+    }
+  };
+
+  let amountDescription = `For ${amount} days`;
+  if (amount === 1) {
+    amountDescription = amountDescription.substring(0, amountDescription.length - 1);
+  }
+
+  return (
+    <div style={styles.line}>
+      <div>
+        <div style={styles.title}>{ title }</div>
+        <div style={styles.amount}>{amountDescription}</div>
+      </div>
+      <div style={styles.price}>{ price.toFixed(2) }</div>
+    </div>
+  );
+};
+
+const TotalLine = ({ price }) => {
   const styles = {
     line: {
       display: 'flex',
@@ -25,12 +56,13 @@ const Line = ({ title, price }) => {
 
   return (
     <div style={styles.line}>
-      <div style={styles.title}>{ title }</div>
+      <div style={styles.title}>Total</div>
       <div style={styles.price}>{ price.toFixed(2) }</div>
     </div>
   );
 };
 
+// eslint-disable-next-line
 const Payment = ({ items, resetCart }, { router }) => {
   const styles = {
     appbar: {
@@ -76,7 +108,7 @@ const Payment = ({ items, resetCart }, { router }) => {
 
   const itemsInCart = items
     .filter(item => item.inCart)
-    .map(({ title, price, id }) => <Line title={title} price={price} key={id} />);
+    .map(({ title, price, id, inCartAmount }) => <Line title={title} price={price} key={id} amount={inCartAmount} />);
 
   const total = items
     .filter(item => item.inCart)
@@ -94,7 +126,7 @@ const Payment = ({ items, resetCart }, { router }) => {
         <div style={styles.content}>
           {itemsInCart}
           <Divider style={styles.divider} />
-          <Line title="Total" price={total} />
+          <TotalLine price={total} />
         </div>
       </div>
       <BottomButton>

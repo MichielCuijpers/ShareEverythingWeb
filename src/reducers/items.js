@@ -20,6 +20,7 @@ export default function styles(state = initialState, action) {
         // eslint-disable-next-line
         if (itemCopy.id == action.id) {
           itemCopy.inCart = true;
+          itemCopy.inCartAmount = action.amount;
         }
 
         return itemCopy;

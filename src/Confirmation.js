@@ -29,12 +29,20 @@ const Confirmation = ({ resetCart, resetSearch }, { router }) => {
       lineHeight: 1.4,
       textAlign: 'center',
     },
-    emoji: {
+    emojiContainer: {
       textAlign: 'center',
       paddingTop: 48,
       fontSize: 112,
       paddingBottom: 24,
     },
+    emoji: {
+      width: 132,
+      height: 132,
+      padding: 32,
+      borderRadius: '50%',
+      border: '1px solid #eee',
+      display: 'inline-block',
+    }
   };
 
   const onHome = () => {
@@ -52,9 +60,11 @@ const Confirmation = ({ resetCart, resetSearch }, { router }) => {
         onLeftIconButtonTouchTap={onHome}
       />
       <div style={styles.container}>
-        <div style={styles.emoji}>
-          🎉
+        <div style={styles.emojiContainer}>
+          <div style={styles.emoji}>
+            🎉
           </div>
+        </div>
         <div style={styles.content}>
           <div>Congratulations.</div>
           <div>Your items are ordered and coming your way.</div>

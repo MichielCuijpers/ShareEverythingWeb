@@ -15,6 +15,10 @@ class App extends React.Component {
     super(props);
   }
 
+  onRouteUpdate = () => {
+    window.scrollTo(0, 0);
+  };
+
   render() {
     injectTapEventPlugin();    
     const muiTheme = getMuiTheme();
@@ -34,7 +38,7 @@ class App extends React.Component {
           ]}
         />             
         <MuiThemeProvider muiTheme={muiTheme}>        
-          <Router history={browserHistory}>
+          <Router history={browserHistory} onRouteUpdate={this.onRouteUpdate}>
             <Route path="/" component={Items} />
             <Route path="/details/:id" component={ItemDetails} />
           </Router>

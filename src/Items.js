@@ -10,7 +10,6 @@ import data from './data.json';
 
 const Items = (props, { router }) => {
   const onTouchTap = (id) => {
-    console.log('onTouchTap', router);
     router.push(`/details/${id}`);
   };
 

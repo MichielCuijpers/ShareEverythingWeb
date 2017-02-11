@@ -95,7 +95,7 @@ class ItemDetails extends React.Component {
   };
 
   render() {
-    const { id, title, description, price, imageUrl, owner } = this.props;
+    const { title, description, price, imageUrl, owner } = this.props;
     const { router } = this.context;
 
     const actions = [

@@ -6,7 +6,9 @@ import Right from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import DeleteForever from 'material-ui/svg-icons/action/delete-forever';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
+import { List, ListItem } from 'material-ui/List';
 
 import { connect } from 'react-redux';
 
@@ -14,53 +16,6 @@ import { resetCart } from './actions/items';
 
 import BottomButton from './BottomButton';
 
-const Line = ({ title, price, amount }) => {
-  const styles = {
-    line: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginBottom: 8,
-    },
-    title: {
-      lineHeight: 1.4,
-    },
-    amount: {
-      color: '#666',
-    }
-  };
-
-  let amountDescription = `For ${amount} days`;
-  if (amount === 1) {
-    amountDescription = amountDescription.substring(0, amountDescription.length - 1);
-  }
-
-  return (
-    <div style={styles.line}>
-      <div>
-        <div style={styles.title}>{ title }</div>
-        <div style={styles.amount}>{amountDescription}</div>
-      </div>
-      <div style={styles.price}>{ price.toFixed(2) }</div>
-    </div>
-  );
-};
-
-const TotalLine = ({ price }) => {
-  const styles = {
-    line: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginBottom: 8,
-    }
-  };
-
-  return (
-    <div style={styles.line}>
-      <div style={styles.title}>Total</div>
-      <div style={styles.price}>{ price.toFixed(2) }</div>
-    </div>
-  );
-};
 
 // eslint-disable-next-line
 const Payment = ({ items, resetCart }, { router }) => {
@@ -79,8 +34,8 @@ const Payment = ({ items, resetCart }, { router }) => {
       padding: 16,
     },
     divider: {
-      marginTop: 16,
-      marginBottom: 16,
+      marginLeft: 16,
+      marginRight: 16,
     },
     buttons: {
       display: 'flex',
@@ -108,7 +63,27 @@ const Payment = ({ items, resetCart }, { router }) => {
 
   const itemsInCart = items
     .filter(item => item.inCart)
-    .map(({ title, price, id, inCartAmount }) => <Line title={title} price={price} key={id} amount={inCartAmount} />);
+    .map(({ title, price, inCartAmount }) => {
+      let amount = `For ${inCartAmount} days`;
+      if (inCartAmount === 1) {
+        amount = amount.substring(0, amount.length - 1);
+      }
+
+      return (
+        <ListItem
+          primaryText={title}
+          secondaryText={amount}
+          rightAvatar={
+            <Avatar
+              color="#000"
+              backgroundColor="#fff"
+            >
+              {price.toFixed(2)}
+            </Avatar>
+          }
+        />
+      );
+    });
 
   const total = items
     .filter(item => item.inCart)
@@ -123,11 +98,23 @@ const Payment = ({ items, resetCart }, { router }) => {
         onLeftIconButtonTouchTap={onHome}
       />
       <div style={styles.container}>
-        <div style={styles.content}>
+        <List>
           {itemsInCart}
-          <Divider style={styles.divider} />
-          <TotalLine price={total} />
-        </div>
+        </List>
+        <Divider style={styles.divider} />
+        <List>
+          <ListItem
+            primaryText="Total"
+            rightAvatar={
+              <Avatar
+                color="#000"
+                backgroundColor="#fff"
+              >
+                {total.toFixed(2)}
+              </Avatar>
+            }
+          />
+        </List>
       </div>
       <BottomButton>
         <div style={styles.buttons}>

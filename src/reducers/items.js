@@ -19,7 +19,7 @@ export default function styles(state = initialState, action) {
 
         // as == is needed instead of ===
         // eslint-disable-next-line
-        if (itemCopy.id == action.id) {
+        if (itemCopy.id == action.id && !itemCopy.isBooked) {
           itemCopy.inCart = true;
           itemCopy.inCartAmount = action.amount;
         }

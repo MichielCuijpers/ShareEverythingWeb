@@ -67,7 +67,7 @@ const styles = {
   },
   ownerText: {
     flex: 1,
-    fontSize: 12,
+    fontSize: 11,
   },
   ownerIcon: {
     marginRight: 8,

@@ -13,7 +13,7 @@ import Confirmation from './Confirmation';
 import Home from './Home';
 import ItemDetails from './ItemDetails';
 import Payment from './Payment';
-import OwnerModel from './models/OwnerModel'
+import OwnerModel from './models/OwnerModel';
 
 import rootReducer from './reducers';
 import customTheme from './customTheme';

@@ -4,12 +4,14 @@ import Sifter from 'sifter';
 
 import { connect } from 'react-redux';
 
+import { getImageUrl } from './helpers';
+
 const Items = ({ items = [] }, { router }) => {
   const showDetails = (id) => {
     router.push(`/details/${id}`);
   };
 
-  const components = items.map(({ title, id, price, imageUrl, inCart }) => {
+  const components = items.map(({ title, id, price, inCart }) => {
     const titleBackground = inCart ? 'rgba(14, 86, 115, 0.7)' : 'rgba(0, 0, 0, 0.4)';
 
     return (
@@ -17,10 +19,10 @@ const Items = ({ items = [] }, { router }) => {
         onTouchTap={() => showDetails(id)}
         key={id}
         title={title}
-        subtitle={<span>{price}</span>}
+        subtitle={<span>ETH {price}</span>}
         titleBackground={titleBackground}
       >
-        <img src={imageUrl} />
+        <img src={getImageUrl(id)} />
       </GridTile>
     );
   });
@@ -47,22 +49,23 @@ Items.contextTypes = {
   router: React.PropTypes.object.isRequired,
 };
 
-const FilteredItems = ({ items, search }) => {
+const FilteredItems = ({ items, searchQuery }) => {
   const sifter = new Sifter(items);
 
   let filteredItems = items;
 
-  if (search) {
-    filteredItems = sifter.search(search, { fields: ['title', 'description'], conjunction: 'and' }).items
+  if (searchQuery) {
+    filteredItems = sifter.search(searchQuery, { fields: ['title', 'description'], conjunction: 'and' }).items
       .map(({ id }) => items[id]);
   }
 
   return <Items items={filteredItems} />;
 };
 
-const mapStateToProps = ({ items }) => {
+const mapStateToProps = ({ items, search }) => {
   return {
     items,
+    searchQuery: search.query,
   };
 };
 

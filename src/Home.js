@@ -6,20 +6,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import { connect } from 'react-redux';
 
+import { setSearch } from './actions/search';
 
 import Items from './Items';
 import BottomButton from './BottomButton';
 import Logo from './Logo';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      search: '',
-    };
-  }
-
   onPay = () => {
     this.context.router.push('/payment');
   };
@@ -90,14 +83,14 @@ class Home extends React.Component {
           <div style={styles.header}>
             <div style={styles.headerTitle}>What do you need?</div>
             <TextField
-              value={this.state.search}
-              onChange={(e, search) => this.setState({ search })}
+              value={this.props.searchQuery}
+              onChange={(e, value) => this.props.setSearch(value)}
               hintText="Search"
               fullWidth
               style={styles.search}
             />
           </div>
-          <Items search={this.state.search} />
+          <Items />
         </div>
         {this.renderBottomButton()}
       </div>
@@ -109,10 +102,19 @@ Home.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-const mapStateToProps = ({ items }) => {
+const mapStateToProps = ({ items, search }) => {
   return {
+    searchQuery: search.query,
     numberOfItemsInCart: items.filter(item => item.inCart).length
   };
 };
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSearch: (value) => {
+      dispatch(setSearch(value));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

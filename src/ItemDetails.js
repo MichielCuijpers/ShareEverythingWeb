@@ -18,6 +18,9 @@ import Divider from 'material-ui/Divider';
 import BottomButton from './BottomButton';
 
 import { addToCart } from './actions/items';
+import { resetSearch } from './actions/search';
+
+import { getImageUrl } from './helpers';
 
 const styles = {
   appbar: {
@@ -31,7 +34,7 @@ const styles = {
     marginBottom: 76,
   },
   imageContainer: {
-    padding: 32,
+    padding: 64,
   },
   image: {
     width: '100%',
@@ -64,6 +67,7 @@ const styles = {
   },
   ownerText: {
     flex: 1,
+    fontSize: 11,
   },
   ownerIcon: {
     marginRight: 8,
@@ -83,6 +87,7 @@ class ItemDetails extends React.Component {
   onAddToCart = () => {
     this.setState({ open: false });
     this.props.addToCart(this.state.amount);
+    this.props.resetSearch();
     this.context.router.goBack();
   };
 
@@ -95,7 +100,7 @@ class ItemDetails extends React.Component {
   };
 
   render() {
-    const { title, description, price, imageUrl, owner } = this.props;
+    const { id, title, description, price, owner } = this.props;
     const { router } = this.context;
 
     const actions = [
@@ -123,12 +128,12 @@ class ItemDetails extends React.Component {
         />
         <div style={styles.container}>
           <div style={styles.imageContainer}>
-            <img src={imageUrl} style={styles.image} />
+            <img src={getImageUrl(id)} style={styles.image} />
           </div>
           <div style={styles.content}>
             <div style={styles.header}>
               <div style={styles.headerTitle}>{title}</div>
-              <div style={styles.headerPrice}>{price}</div>
+              <div style={styles.headerPrice}>ETH {price}</div>
             </div>
             <div style={styles.description}>{description}</div>
             <Divider style={styles.divider} />
@@ -189,6 +194,9 @@ const mapDispatchToProps = (dispatch, { params }) => {
     addToCart: (amount) => {
       dispatch(addToCart({ id: params.id, amount }));
     },
+    resetSearch: () => {
+      dispatch(resetSearch());
+    }
   };
 };
 

@@ -9,8 +9,9 @@ import { connect } from 'react-redux';
 import BottomButton from './BottomButton';
 
 import { resetCart } from './actions/items';
+import { resetSearch } from './actions/search';
 
-const Confirmation = ({ resetCart }, { router }) => {
+const Confirmation = ({ resetCart, resetSearch }, { router }) => {
   const styles = {
     appbar: {
       position: 'fixed',
@@ -28,16 +29,25 @@ const Confirmation = ({ resetCart }, { router }) => {
       lineHeight: 1.4,
       textAlign: 'center',
     },
-    emoji: {
+    emojiContainer: {
       textAlign: 'center',
       paddingTop: 48,
       fontSize: 112,
       paddingBottom: 24,
     },
+    emoji: {
+      width: 132,
+      height: 132,
+      padding: 32,
+      borderRadius: '50%',
+      border: '1px solid #eee',
+      display: 'inline-block',
+    }
   };
 
   const onHome = () => {
     resetCart();
+    resetSearch();
     router.replace('/');
   };
 
@@ -50,9 +60,11 @@ const Confirmation = ({ resetCart }, { router }) => {
         onLeftIconButtonTouchTap={onHome}
       />
       <div style={styles.container}>
-        <div style={styles.emoji}>
-          🎉
+        <div style={styles.emojiContainer}>
+          <div style={styles.emoji}>
+            🎉
           </div>
+        </div>
         <div style={styles.content}>
           <div>Congratulations.</div>
           <div>Your items are ordered and coming your way.</div>
@@ -81,6 +93,9 @@ const mapDispatchToProps = (dispatch) => {
     resetCart: () => {
       dispatch(resetCart());
     },
+    resetSearch: () => {
+      dispatch(resetSearch());
+    },    
   };
 };
 

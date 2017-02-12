@@ -128,7 +128,7 @@ class ItemDetails extends React.Component {
         />
         <div style={styles.container}>
           <div style={styles.imageContainer}>
-            <img src={getImageUrl(id)} style={styles.image} />
+            <img src={getImageUrl(id)} style={styles.image} alt={title} />
           </div>
           <div style={styles.content}>
             <div style={styles.header}>

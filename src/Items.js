@@ -22,7 +22,7 @@ const Items = ({ items = [] }, { router }) => {
         subtitle={<span>ETH {price}</span>}
         titleBackground={titleBackground}
       >
-        <img src={getImageUrl(id)} />
+        <img src={getImageUrl(id)} alt={title} />
       </GridTile>
     );
   });

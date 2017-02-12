@@ -1,32 +1,31 @@
+import BigNumber from 'bignumber.js'
+
 import { Owner, Asset } from './Contracts'
+import { addItem } from '../actions/items';
 
 class OwnerModel {
-	static async load() {
-		// let owner = Owner.at("0xaebbe6ad5a6cd3b9f2f309f1f13f051a076f58ff");
-		let owner = Owner.at("0x9829777a3289b7b52c82256b9f900d336d108e80");
+	static async load(dispatch) {
+		let owner = Owner.at("0x41503427309bb552F7D41ee4cDf55B16599e575B");
 
-		let promises = [];
-		for (let i = 0; i < 255; i++) {
-			var asset = owner._assets(i)
-				.then((address) => {
-					if (address === "0x0000000000000000000000000000000000000000") {
-						return null;
-					}
+		for (let i = 0; i < 30; i++) {
+			var assetAddress = await owner._assets(i);
+			if (assetAddress === "0x0000000000000000000000000000000000000000") {
+				continue;
+			}
 
-					console.log(address);
-					return Asset.at(address)
-						.then(async (assetContract) => {
-							return {
-								id: await assetContract._id(),
-								description: await assetContract._description(0),
-								price: await assetContract._pricePerTimeUnit(),
-							};
-						});
+			Asset.at(assetAddress)
+				.then(async (assetContract) => {
+					return {
+						id: new BigNumber(await assetContract._id()).toFixed(),
+						description: await assetContract._description(0),
+						owner: await assetContract._owner(),
+						address: assetContract.address
+					};
+				})
+				.then((asset) => {
+					dispatch(addItem(asset));
 				});
-
-			promises.push(asset);
 		}
-		return promises;
 	}
 }
 

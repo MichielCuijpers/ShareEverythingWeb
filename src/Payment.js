@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 import { resetCart } from './actions/items';
 
 import BottomButton from './BottomButton';
+import AssetModel from './models/AssetModel'
 
 
 // eslint-disable-next-line
@@ -53,7 +54,15 @@ const Payment = ({ items, resetCart }, { router }) => {
   };
 
   const onConfirmation = () => {
-    router.push('/confirmation');
+    var item = items.filter(item => item.inCart)[0];
+
+    AssetModel.rent(item.address, item.inCartAmount)
+      .then(() => {
+        //TODO remove the item
+      })
+      .then(() => {
+        router.push('/confirmation');
+      });
   };
 
   const onDelete = () => {
@@ -147,7 +156,7 @@ Payment.contextTypes = {
 
 const mapStateToProps = ({ items }) => {
   return {
-    items,
+    items
   };
 };
 

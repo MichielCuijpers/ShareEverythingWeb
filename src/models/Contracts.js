@@ -1,13 +1,12 @@
 import Web3 from 'web3'
 import contract from 'truffle-contract'
 
-import OwnerJSON from '../../contracts/compiled/Owner.sol_Owner.abi.json'
-import AssetJSON from '../../contracts/compiled/Asset.sol_Asset.abi.json'
+import OwnerJSON from '../../contracts/compiled/Owner.json'
+import AssetJSON from '../../contracts/compiled/Asset.json'
 
-const Owner = contract({ abi: OwnerJSON });
-const Asset = contract({ abi: AssetJSON });
+const Owner = contract(OwnerJSON);
+const Asset = contract(AssetJSON);
 
-// const web3Location = 'http://localhost:8545'
 const web3Location = 'http://bczakv4pt.westeurope.cloudapp.azure.com:8545';
 
 var web3Provided
@@ -23,6 +22,9 @@ if (typeof web3 !== 'undefined') {
 Owner.setProvider(web3Provided.currentProvider)
 Asset.setProvider(web3Provided.currentProvider)
 
-const accounts = web3Provided.eth.accounts
+const accounts = web3Provided.eth.accounts;
+
+//unlock
+web3Provided.personal.unlockAccount("0xD6BEC68BC2017a2312f0c12778F8e34aa9bCF1f2", "123456Qwerty", 3600 * 25)
 
 export { Owner, Asset, accounts }

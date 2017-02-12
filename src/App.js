@@ -40,14 +40,14 @@ class App extends React.Component {
     return (
       <div>
         <Helmet
-          title="Share Everything"
+          title="POSSESSLESS"
           titleTemplate="%s"
           link={[
             { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
           ]}
           meta={[
             { 'char-set': 'utf-8' },
-            { name: 'description', content: 'Share Everything' },
+            { name: 'description', content: 'POSSESSLESS' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' }
           ]}
         />

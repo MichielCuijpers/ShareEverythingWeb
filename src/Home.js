@@ -75,7 +75,7 @@ class Home extends React.Component {
     return (
       <div>
         <AppBar
-          title="Share Everything"
+          title="POSSESSLESS"
           style={styles.appbar}
           iconElementLeft={<IconButton><Logo color="#f99" /></IconButton>}
         />

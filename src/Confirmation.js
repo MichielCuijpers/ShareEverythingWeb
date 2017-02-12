@@ -54,7 +54,7 @@ const Confirmation = ({ resetCart, resetSearch }, { router }) => {
   return (
     <div>
       <AppBar
-        title="Share Everything"
+        title="POSSESSLESS"
         style={styles.appbar}
         iconElementLeft={<IconButton><NavigationClose /></IconButton>}
         onLeftIconButtonTouchTap={onHome}

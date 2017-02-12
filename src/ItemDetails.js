@@ -121,7 +121,7 @@ class ItemDetails extends React.Component {
     return (
       <div>
         <AppBar
-          title="Share Everything"
+          title="POSSESSLESS"
           style={styles.appbar}
           iconElementLeft={<IconButton><Left /></IconButton>}
           onLeftIconButtonTouchTap={router.goBack}

@@ -155,6 +155,7 @@ class ItemDetails extends React.Component {
             labelPosition="before"
             secondary
             onTouchTap={this.handleOpen}
+            disabled={this.props.isBooked}
             icon={<AddShoppingCart />}
           />
         </BottomButton>

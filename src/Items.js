@@ -50,15 +50,16 @@ Items.contextTypes = {
 };
 
 const FilteredItems = ({ items, searchQuery }) => {
-  const sifter = new Sifter(items);
-
   // remove items that are booked
-  let filteredItems = items.filter(item => !item.isBooked);
+  const unbookedItems = items.filter(item => !item.isBooked);
+
+  const sifter = new Sifter(unbookedItems);
+  let filteredItems = unbookedItems.filter(item => !item.isBooked);
 
   // filter items using a search query
   if (searchQuery) {
     filteredItems = sifter.search(searchQuery, { fields: ['title', 'description'], conjunction: 'and' }).items
-      .map(({ id }) => items[id]);
+      .map(({ id }) => unbookedItems[id]);
   }
 
   return <Items items={filteredItems} />;

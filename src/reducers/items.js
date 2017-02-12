@@ -42,6 +42,7 @@ export default function styles(state = initialState, action) {
           itemCopy.description = action.item.description;
           itemCopy.address = action.item.address;
           itemCopy.owner = action.item.owner;
+          itemCopy.isBooked = action.item.isBooked;
         }
 
         return itemCopy;

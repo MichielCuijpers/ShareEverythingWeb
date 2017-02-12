@@ -19,10 +19,12 @@ class OwnerModel {
 						id: new BigNumber(await assetContract._id()).toFixed(),
 						description: await assetContract._description(0),
 						owner: await assetContract._owner(),
-						address: assetContract.address
+						address: assetContract.address,
+						isBooked: (await assetContract._currentAgreement()) !== "0x0000000000000000000000000000000000000000"
 					};
 				})
 				.then((asset) => {
+					console.log(asset);
 					dispatch(addItem(asset));
 				});
 		}

@@ -5,7 +5,7 @@ import { addItem } from '../actions/items';
 
 class OwnerModel {
 	static async load(dispatch) {
-		let owner = Owner.at("0x41503427309bb552F7D41ee4cDf55B16599e575B");
+		let owner = Owner.at("0x1d2a32d9b311dc5d4f28e6d2d50b7bfda3c60cc9");
 
 		for (let i = 0; i < 30; i++) {
 			var assetAddress = await owner._assets(i);

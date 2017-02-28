@@ -1,5 +1,5 @@
 export const getImageUrl = (id) => {
-  return `https://s3-eu-west-1.amazonaws.com/dutchblockchain-hackathon/Item${id}.jpg`;
+  return `https://s3-eu-west-1.amazonaws.com/dbh17-hackathon/Item${id}.jpg`;
 };
 
 export const getOwner = () => {
